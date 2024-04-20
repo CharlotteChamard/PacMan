@@ -222,17 +222,48 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
       legal moves.
     """
 
-    # BEGIN_YOUR_ANSWER
-    raise NotImplementedError  # remove this line before writing code
-    # END_YOUR_ANSWER
+    def expectimax(state, depth, agentIndex):
+      # Check for terminal state
+      if state.isWin() or state.isLose() or depth == self.depth * gameState.getNumAgents():
+        return self.evaluationFunction(state)
+
+      # Pac-Man's turn
+      if agentIndex == 0:
+        value = max(expectimax(state.generateSuccessor(agentIndex, action), depth + 1, 1) for action in
+                    state.getLegalActions(agentIndex))
+        # print(f"Minimax value at root (depth {self.depth}): {value}")
+        return value
+
+      # Ghost's turn
+      else:
+        next_agent = (agentIndex + 1) % state.getNumAgents()
+        next_depth = depth + 1 if next_agent != 0 else depth
+        actions = state.getLegalActions(agentIndex)
+        return sum(expectimax(state.generateSuccessor(agentIndex, action), next_depth, next_agent) for action in
+                   actions) / len(actions)
+
+    # Get the best action for Pac-Man
+    best_action = max(gameState.getLegalActions(0),
+                      key=lambda action: expectimax(gameState.generateSuccessor(0, action), self.depth, 1))
+
+    return best_action
   
   def getQ(self, gameState, action):
     """
       Returns the expectimax Q-Value using self.depth and self.evaluationFunction.
     """
-    # BEGIN_YOUR_ANSWER
-    raise NotImplementedError  # remove this line before writing code
-    # END_YOUR_ANSWER
+    # Initialize the Q-value
+    q_value = 0.0
+
+    # Loop over possible successor states
+    for next_state in gameState.generateSuccessors(0, action):
+      # Call the expectimax function to compute the value of the state
+      value = self.expectimax(next_state, self.depth, 1)
+
+      # Update the Q-value using the evaluation function and the probability of this successor state
+      q_value += value * probability_of_successor_state
+
+    return q_value
 
 ######################################################################################
 # Problem 3a: implementing biased-expectimax
@@ -250,17 +281,52 @@ class BiasedExpectimaxAgent(MultiAgentSearchAgent):
       legal moves.
     """
 
-    # BEGIN_YOUR_ANSWER
-    raise NotImplementedError  # remove this line before writing code
-    # END_YOUR_ANSWER
+    def Biasedexpectimax(state, depth, agentIndex):
+      # Check for terminal state
+      if state.isWin() or state.isLose() or depth == self.depth * gameState.getNumAgents():
+        return self.evaluationFunction(state)
+
+      # Pac-Man's turn
+      if agentIndex == 0:
+        value = max(Biasedexpectimax(state.generateSuccessor(agentIndex, action), depth + 1, 1) for action in
+                    state.getLegalActions(agentIndex))
+        # print(f"Minimax value at root (depth {self.depth}): {value}")
+        return value
+
+      # Ghost's turn
+      else:
+        next_agent = (agentIndex + 1) % state.getNumAgents()
+        next_depth = depth + 1 if next_agent != 0 else depth
+        actions = state.getLegalActions(agentIndex)
+        # Calculate biased probabilities
+        probability_stop = 0.5 + 0.5 * (1 / len(actions))  # Probability of choosing STOP action
+        probability_other = 0.5 * (1 / len(actions))  # Probability of choosing other actions
+        # Calculate the value of each successor state
+        successor_values = [Biasedexpectimax(state.generateSuccessor(agentIndex, action), next_depth,
+                                             next_agent) for action in actions]
+        # Weighted sum of values based on biased probabilities
+        return sum(probability_stop * value if action == Directions.STOP else probability_other * value
+                   for action, value in zip(actions, successor_values))
+
+    # Get the best action for Pac-Man
+    best_action = max(gameState.getLegalActions(0),
+                      key=lambda action: Biasedexpectimax(gameState.generateSuccessor(0, action), self.depth, 1))
+
+    return best_action
   
   def getQ(self, gameState, action):
     """
       Returns the biased-expectimax Q-Value using self.depth and self.evaluationFunction.
     """
-    # BEGIN_YOUR_ANSWER
-    raise NotImplementedError  # remove this line before writing code
-    # END_YOUR_ANSWER
+    # Calculate the expected value of the Q-function using biased-expectimax
+    q_value = 0.0
+    # Loop over possible successor states
+    for next_state in gameState.generateSuccessors(0, action):
+      # Call the biased-expectimax function to compute the value of the state
+      value = self.Biasedexpectimax(next_state, self.depth, 1)
+      # Update the Q-value using the evaluation function and the probability of this successor state
+      q_value += value * probability_of_successor_state  # Adjust probability_of_successor_state accordingly
+    return q_value
 
 ######################################################################################
 # Problem 4a: implementing expectiminimax
@@ -278,9 +344,35 @@ class ExpectiminimaxAgent(MultiAgentSearchAgent):
       legal moves.
     """
 
-    # BEGIN_YOUR_ANSWER
-    raise NotImplementedError  # remove this line before writing code
-    # END_YOUR_ANSWER
+    def expectiminimax(state, depth, agentIndex):
+      # Check for terminal state
+      if state.isWin() or state.isLose() or depth == self.depth * gameState.getNumAgents():
+        return self.evaluationFunction(state)
+
+      # Pac-Man's turn
+      if agentIndex == 0:
+        value = max(expectiminimax(state.generateSuccessor(agentIndex, action), depth + 1, 1) for action in
+                    state.getLegalActions(agentIndex))
+        # print(f"Minimax value at root (depth {self.depth}): {value}")
+        return value
+
+      # Ghost's turn
+      else:
+        next_agent = (agentIndex + 1) % state.getNumAgents()
+        next_depth = depth + 1 if next_agent != 0 else depth
+        actions = state.getLegalActions(agentIndex)
+        if agentIndex % 2 != 0:
+          return min(expectiminimax(state.generateSuccessor(agentIndex, action), next_depth, next_agent) for action in
+                   actions)
+        else:
+          return sum(expectiminimax(state.generateSuccessor(agentIndex, action), next_depth, next_agent) for action in
+                   actions) / len(actions)
+
+    # Get the best action for Pac-Man
+    best_action = max(gameState.getLegalActions(0),
+                      key=lambda action: expectiminimax(gameState.generateSuccessor(0, action), self.depth, 1))
+
+    return best_action
   
   def getQ(self, gameState, action):
     """
