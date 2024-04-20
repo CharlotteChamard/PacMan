@@ -1,3 +1,5 @@
+import math
+
 from util import manhattanDistance
 from game import Directions
 import random, util
@@ -378,9 +380,15 @@ class ExpectiminimaxAgent(MultiAgentSearchAgent):
     """
       Returns the expectiminimax Q-Value using self.depth and self.evaluationFunction.
     """
-    # BEGIN_YOUR_ANSWER
-    raise NotImplementedError  # remove this line before writing code
-    # END_YOUR_ANSWER
+    # Initialize the Q-value
+    q_value = 0.0
+    # Loop over possible successor states
+    for next_state in gameState.generateSuccessors(0, action):
+      # Call the expectiminimax function to compute the value of the state
+      value = self.expectiminimax(next_state, self.depth, 1)
+      # Update the Q-value using the evaluation function and the probability of this successor state
+      q_value += value * probability_of_successor_state  # Adjust probability_of_successor_state accordingly
+    return q_value
 
 ######################################################################################
 # Problem 5a: implementing alpha-beta
@@ -393,19 +401,60 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
   def getAction(self, gameState):
     """
       Returns the expectiminimax action using self.depth and self.evaluationFunction
+
+      The even-numbered ghost should be modeled as choosing uniformly at random from their
+      legal moves.
     """
 
-    # BEGIN_YOUR_ANSWER
-    raise NotImplementedError  # remove this line before writing code
-    # END_YOUR_ANSWER
+    def AlphaBeta(state, depth, agentIndex, alpha, beta):
+      # Check for terminal state
+      if state.isWin() or state.isLose() or depth == self.depth * gameState.getNumAgents():
+        return self.evaluationFunction(state)
+
+      # Pac-Man's turn
+      if agentIndex == 0:
+        value = -math.inf
+        for action in state.getLegalActions(agentIndex):
+          value = max(value, AlphaBeta(state.generateSuccessor(agentIndex, action), depth + 1, 1, alpha, beta))
+          alpha = max(alpha, value)
+          if beta <= alpha:
+            break
+        # print(f"Minimax value at root (depth {self.depth}): {value}")
+        return value
+
+      # Ghost's turn
+      else:
+        next_agent = (agentIndex + 1) % state.getNumAgents()
+        next_depth = depth + 1 if next_agent != 0 else depth
+        actions = state.getLegalActions(agentIndex)
+        if agentIndex % 2 != 0:
+          value = math.inf
+          for action in actions:
+            value = min(value, AlphaBeta(state.generateSuccessor(agentIndex, action), next_depth, next_agent, alpha, beta))
+            beta = min(value,beta)
+            if beta <= alpha:
+              break
+          return value
+        else:
+          return sum(AlphaBeta(state.generateSuccessor(agentIndex, action), next_depth, next_agent) for action in
+                     actions) / len(actions)
+
+    # Get the best action for Pac-Man
+    best_action = max(gameState.getLegalActions(0),
+                      key=lambda action: AlphaBeta(gameState.generateSuccessor(0, action), self.depth, 1, -math.inf, math.inf))
+
+    return best_action
   
   def getQ(self, gameState, action):
     """
       Returns the expectiminimax Q-Value using self.depth and self.evaluationFunction.
     """
-    # BEGIN_YOUR_ANSWER
-    raise NotImplementedError  # remove this line before writing code
-    # END_YOUR_ANSWER
+    # Generate the successor state after taking the given action
+    nextState = gameState.generateSuccessor(0, action)
+
+    # Call alpha_beta with the successor state and appropriate parameters
+    q_value = self.AlphaBeta(nextState, self.depth, 1, -math.inf, math.inf)
+    return q_value
 
 ######################################################################################
 # Problem 6a: creating a better evaluation function
