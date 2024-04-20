@@ -1,0 +1,315 @@
+{'extraCredit': 0,
+ 'fatalError': False,
+ 'maxExtraCredit': 0,
+ 'maxTotalPoints': 0,
+ 'messages': [],
+ 'mode': 'auto',
+ 'parts': [{'description': 'Tests minimax for timeout on smallClassic.',
+            'extraCredit': False,
+            'maxPoints': 0,
+            'maxSeconds': 10,
+            'messages': [],
+            'name': '1a-1-basic',
+            'points': 0,
+            'seconds': 0},
+           {'description': 'Tests minimax',
+            'extraCredit': False,
+            'maxPoints': 2,
+            'maxSeconds': 10,
+            'messages': [],
+            'name': '1a-2-hidden',
+            'points': 0,
+            'seconds': 0},
+           {'description': 'Tests expectimax for timeout on smallClassic.',
+            'extraCredit': False,
+            'maxPoints': 0,
+            'maxSeconds': 10,
+            'messages': ["Exception thrown: <class 'NotImplementedError'> -- ",
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\grader.py", '
+                         'line 139, in <lambda>\n'
+                         "    grader.addBasicPart('2a-1-basic', lambda : "
+                         "testBasic('expectimax'), 0, maxSeconds=maxSeconds, "
+                         "description='Tests expectimax for timeout on "
+                         "smallClassic.')\n"
+                         '                                               '
+                         '^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\grader.py", '
+                         'line 87, in testBasic\n'
+                         "    stats = run('smallClassic', agent[agentName], "
+                         '[DirectionalGhost(i + 1) for i in range(2)], '
+                         "name='%s (depth %d)' % (agentName, 2))\n"
+                         '            '
+                         '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\grader.py", '
+                         'line 40, in run\n'
+                         '    games = pacman.runGames(lay, pac, ghosts, disp, '
+                         'nGames, False, catchExceptions=False)\n'
+                         '            '
+                         '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\pacman.py", '
+                         'line 622, in runGames\n'
+                         '    game.run()\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\game.py", '
+                         'line 652, in run\n'
+                         '    action = agent.getAction(observation)\n'
+                         '             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\submission.py", '
+                         'line 217, in getAction\n'
+                         '    raise NotImplementedError  # remove this line '
+                         'before writing code\n'
+                         '    ^^^^^^^^^^^^^^^^^^^^^^^^^\n'],
+            'name': '2a-1-basic',
+            'points': 0,
+            'seconds': 0},
+           {'description': 'Tests expectimax',
+            'extraCredit': False,
+            'maxPoints': 2,
+            'maxSeconds': 10,
+            'messages': [],
+            'name': '2a-2-hidden',
+            'points': 0,
+            'seconds': 0},
+           {'description': 'Tests biased-expectimax for timeout on '
+                           'smallClassic.',
+            'extraCredit': False,
+            'maxPoints': 0,
+            'maxSeconds': 10,
+            'messages': ["Exception thrown: <class 'NotImplementedError'> -- ",
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\grader.py", '
+                         'line 142, in <lambda>\n'
+                         "    grader.addBasicPart('3a-1-basic', lambda : "
+                         "testBasic('biased-expectimax'), 0, "
+                         "maxSeconds=maxSeconds, description='Tests "
+                         "biased-expectimax for timeout on smallClassic.')\n"
+                         '                                               '
+                         '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\grader.py", '
+                         'line 87, in testBasic\n'
+                         "    stats = run('smallClassic', agent[agentName], "
+                         '[DirectionalGhost(i + 1) for i in range(2)], '
+                         "name='%s (depth %d)' % (agentName, 2))\n"
+                         '            '
+                         '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\grader.py", '
+                         'line 40, in run\n'
+                         '    games = pacman.runGames(lay, pac, ghosts, disp, '
+                         'nGames, False, catchExceptions=False)\n'
+                         '            '
+                         '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\pacman.py", '
+                         'line 622, in runGames\n'
+                         '    game.run()\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\game.py", '
+                         'line 652, in run\n'
+                         '    action = agent.getAction(observation)\n'
+                         '             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\submission.py", '
+                         'line 245, in getAction\n'
+                         '    raise NotImplementedError  # remove this line '
+                         'before writing code\n'
+                         '    ^^^^^^^^^^^^^^^^^^^^^^^^^\n'],
+            'name': '3a-1-basic',
+            'points': 0,
+            'seconds': 0},
+           {'description': 'Tests biased-expectimax',
+            'extraCredit': False,
+            'maxPoints': 6,
+            'maxSeconds': 10,
+            'messages': [],
+            'name': '3a-2-hidden',
+            'points': 0,
+            'seconds': 0},
+           {'description': 'Tests expectiminimax for timeout on smallClassic.',
+            'extraCredit': False,
+            'maxPoints': 0,
+            'maxSeconds': 10,
+            'messages': ["Exception thrown: <class 'NotImplementedError'> -- ",
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\grader.py", '
+                         'line 145, in <lambda>\n'
+                         "    grader.addBasicPart('4a-1-basic', lambda : "
+                         "testBasic('expectiminimax'), 0, "
+                         "maxSeconds=maxSeconds, description='Tests "
+                         "expectiminimax for timeout on smallClassic.')\n"
+                         '                                               '
+                         '^^^^^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\grader.py", '
+                         'line 87, in testBasic\n'
+                         "    stats = run('smallClassic', agent[agentName], "
+                         '[DirectionalGhost(i + 1) for i in range(2)], '
+                         "name='%s (depth %d)' % (agentName, 2))\n"
+                         '            '
+                         '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\grader.py", '
+                         'line 40, in run\n'
+                         '    games = pacman.runGames(lay, pac, ghosts, disp, '
+                         'nGames, False, catchExceptions=False)\n'
+                         '            '
+                         '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\pacman.py", '
+                         'line 622, in runGames\n'
+                         '    game.run()\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\game.py", '
+                         'line 652, in run\n'
+                         '    action = agent.getAction(observation)\n'
+                         '             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\submission.py", '
+                         'line 273, in getAction\n'
+                         '    raise NotImplementedError  # remove this line '
+                         'before writing code\n'
+                         '    ^^^^^^^^^^^^^^^^^^^^^^^^^\n'],
+            'name': '4a-1-basic',
+            'points': 0,
+            'seconds': 0},
+           {'description': 'Tests expectiminimax',
+            'extraCredit': False,
+            'maxPoints': 4,
+            'maxSeconds': 10,
+            'messages': [],
+            'name': '4a-2-hidden',
+            'points': 0,
+            'seconds': 0},
+           {'description': 'Tests alphabeta for timeout on smallClassic.',
+            'extraCredit': False,
+            'maxPoints': 0,
+            'maxSeconds': 5,
+            'messages': ["Exception thrown: <class 'NotImplementedError'> -- ",
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\grader.py", '
+                         'line 148, in <lambda>\n'
+                         "    grader.addBasicPart('5a-1-basic', lambda : "
+                         "testBasic('alphabeta'), 0, description='Tests "
+                         "alphabeta for timeout on smallClassic.')\n"
+                         '                                               '
+                         '^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\grader.py", '
+                         'line 87, in testBasic\n'
+                         "    stats = run('smallClassic', agent[agentName], "
+                         '[DirectionalGhost(i + 1) for i in range(2)], '
+                         "name='%s (depth %d)' % (agentName, 2))\n"
+                         '            '
+                         '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\grader.py", '
+                         'line 40, in run\n'
+                         '    games = pacman.runGames(lay, pac, ghosts, disp, '
+                         'nGames, False, catchExceptions=False)\n'
+                         '            '
+                         '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\pacman.py", '
+                         'line 622, in runGames\n'
+                         '    game.run()\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\game.py", '
+                         'line 652, in run\n'
+                         '    action = agent.getAction(observation)\n'
+                         '             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\submission.py", '
+                         'line 298, in getAction\n'
+                         '    raise NotImplementedError  # remove this line '
+                         'before writing code\n'
+                         '    ^^^^^^^^^^^^^^^^^^^^^^^^^\n'],
+            'name': '5a-1-basic',
+            'points': 0,
+            'seconds': 0},
+           {'description': 'Tests alphabeta',
+            'extraCredit': False,
+            'maxPoints': 8,
+            'maxSeconds': 10,
+            'messages': [],
+            'name': '5a-2-hidden',
+            'points': 0,
+            'seconds': 0},
+           {'description': 'No grading',
+            'extraCredit': False,
+            'maxPoints': 0,
+            'maxSeconds': 300,
+            'messages': ["Exception thrown: <class 'NotImplementedError'> -- ",
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\grader.py", '
+                         'line 194, in <lambda>\n'
+                         "    grader.addHiddenPart('6a-no-grading', lambda : "
+                         "testq6(0), 0, maxSeconds=300, description='No "
+                         "grading')\n"
+                         '                                                   '
+                         '^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\grader.py", '
+                         'line 182, in testq6\n'
+                         '    timeouts, wins, averageScore = runq6()\n'
+                         '                                   ^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\grader.py", '
+                         'line 162, in runq6\n'
+                         '    agent = submission.choiceAgent()\n'
+                         '            ^^^^^^^^^^^^^^^^^^^^^^^^\n',
+                         '  File '
+                         '"C:\\Users\\phili\\OneDrive\\Desktop\\Ablage\\Project\\PacMan\\submission.py", '
+                         'line 329, in choiceAgent\n'
+                         '    raise NotImplementedError  # remove this line '
+                         'before writing code\n'
+                         '    ^^^^^^^^^^^^^^^^^^^^^^^^^\n'],
+            'name': '6a-no-grading',
+            'points': 0,
+            'seconds': 0},
+           {'description': 'Check if score at least 1000 on smallClassic.',
+            'extraCredit': False,
+            'maxPoints': 1,
+            'maxSeconds': 5,
+            'messages': ['Agent timed out on smallClassic with '
+                         'betterEvaluationFunction. No autograder feedback '
+                         'will be provided.'],
+            'name': '6a-1-hidden',
+            'points': 0,
+            'seconds': 0},
+           {'description': 'Check if score at least 1200 on smallClassic.',
+            'extraCredit': False,
+            'maxPoints': 2,
+            'maxSeconds': 5,
+            'messages': ['Agent timed out on smallClassic with '
+                         'betterEvaluationFunction. No autograder feedback '
+                         'will be provided.'],
+            'name': '6a-2-hidden',
+            'points': 0,
+            'seconds': 0},
+           {'description': 'Check if score at least 1400 on smallClassic.',
+            'extraCredit': False,
+            'maxPoints': 2,
+            'maxSeconds': 5,
+            'messages': ['Agent timed out on smallClassic with '
+                         'betterEvaluationFunction. No autograder feedback '
+                         'will be provided.'],
+            'name': '6a-3-hidden',
+            'points': 0,
+            'seconds': 0},
+           {'description': 'Check if score at least 1500 on smallClassic.',
+            'extraCredit': False,
+            'maxPoints': 3,
+            'maxSeconds': 5,
+            'messages': ['Agent timed out on smallClassic with '
+                         'betterEvaluationFunction. No autograder feedback '
+                         'will be provided.'],
+            'name': '6a-4-hidden',
+            'points': 0,
+            'seconds': 0}],
+ 'totalPoints': 0}

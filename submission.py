@@ -168,8 +168,11 @@ class MinimaxAgent(MultiAgentSearchAgent):
 
       # Pac-Man's turn
       if agentIndex == 0:
-        return max(minimax(state.generateSuccessor(agentIndex, action), depth + 1, 1) for action in
+        value = max(minimax(state.generateSuccessor(agentIndex, action), depth + 1, 1) for action in
                    state.getLegalActions(agentIndex))
+        #print(f"Minimax value at root (depth {self.depth}): {value}")
+        return value
+
       # Ghost's turn
       else:
         next_agent = (agentIndex + 1) % state.getNumAgents()
