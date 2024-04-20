@@ -160,9 +160,28 @@ class MinimaxAgent(MultiAgentSearchAgent):
       self.depth:
         The depth to which search should continue
     """
-    # BEGIN_YOUR_ANSWER
-    raise NotImplementedError  # remove this line before writing code
-    # END_YOUR_ANSWER
+
+    def minimax(state, depth, agentIndex):
+      # Check for terminal state
+      if state.isWin() or state.isLose() or depth == self.depth * gameState.getNumAgents():
+        return self.evaluationFunction(state)
+
+      # Pac-Man's turn
+      if agentIndex == 0:
+        return max(minimax(state.generateSuccessor(agentIndex, action), depth + 1, 1) for action in
+                   state.getLegalActions(agentIndex))
+      # Ghost's turn
+      else:
+        next_agent = (agentIndex + 1) % state.getNumAgents()
+        next_depth = depth + 1 if next_agent != 0 else depth
+        return min(minimax(state.generateSuccessor(agentIndex, action), next_depth, next_agent) for action in
+                   state.getLegalActions(agentIndex))
+
+    # Get the best action for Pac-Man
+    best_action = max(gameState.getLegalActions(0),
+                      key=lambda action: minimax(gameState.generateSuccessor(0, action), 1, 1))
+
+    return best_action
   
   def getQ(self, gameState, action):
     """
@@ -171,9 +190,9 @@ class MinimaxAgent(MultiAgentSearchAgent):
       Terminal states can be found by one of the following: 
       pacman won, pacman lost or there are no legal moves.
     """
-    # BEGIN_YOUR_ANSWER
-    raise NotImplementedError  # remove this line before writing code
-    # END_YOUR_ANSWER
+    next_state = gameState.generateSuccessor(0, action)
+    score = self.getAction(next_state)
+    return score
 
 ######################################################################################
 # Problem 2a: implementing expectimax
