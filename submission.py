@@ -185,6 +185,15 @@ class MinimaxAgent(MultiAgentSearchAgent):
                       key=lambda action: minimax(gameState.generateSuccessor(0, action), self.depth, 1))
 
     return best_action
+
+  """
+  Pac-Man rushes towards the closest ghost during the minimax search on the "trappedClassic" layout 
+  because doing so yields the highest possible score. If Pac-Man were to target other ghosts first, 
+  the score would decrease even further. This behavior arises from the prioritization of actions that 
+  maximize Pac-Man's score within the constraints of the game state and the evaluation function used 
+  in the search algorithm. By targeting the closest ghost, Pac-Man aims to capitalize on immediate 
+  scoring opportunities and mitigate potential losses, thereby maximizing its overall score.
+  """
   
   def getQ(self, gameState, action):
     """
