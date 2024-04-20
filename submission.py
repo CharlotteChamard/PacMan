@@ -179,7 +179,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
 
     # Get the best action for Pac-Man
     best_action = max(gameState.getLegalActions(0),
-                      key=lambda action: minimax(gameState.generateSuccessor(0, action), 1, 1))
+                      key=lambda action: minimax(gameState.generateSuccessor(0, action), self.depth, 1))
 
     return best_action
   
