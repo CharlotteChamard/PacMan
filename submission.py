@@ -760,8 +760,6 @@ def betterEvaluationFunction(currentGameState):
 
         # displayGrid(walls, escape_points, pacmanPosition, paths, ghostPaths, 1)
 
-    #score += 1000 / (10 * abs(calculateMaxPossibleScore(currentGameState)-score))
-
     return score
 
 
